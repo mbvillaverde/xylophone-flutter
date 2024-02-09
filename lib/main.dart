@@ -12,13 +12,13 @@ class XylophoneApp extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              _createSoundButton(Colors.red, 1),
-              _createSoundButton(Colors.orange, 2),
-              _createSoundButton(Colors.yellow, 3),
-              _createSoundButton(Colors.lightGreen, 4),
-              _createSoundButton(Colors.green, 5),
-              _createSoundButton(Colors.blue, 6),
-              _createSoundButton(Colors.purple, 7),
+              _createSoundButton(color: Colors.red, soundNumber: 1),
+              _createSoundButton(color: Colors.orange, soundNumber: 2),
+              _createSoundButton(color: Colors.yellow, soundNumber: 3),
+              _createSoundButton(color: Colors.lightGreen, soundNumber: 4),
+              _createSoundButton(color: Colors.green, soundNumber: 5),
+              _createSoundButton(color: Colors.blue, soundNumber: 6),
+              _createSoundButton(color: Colors.purple, soundNumber: 7),
             ],
           ),
         ),
@@ -26,14 +26,15 @@ class XylophoneApp extends StatelessWidget {
     );
   }
 
-  Expanded _createSoundButton(Color buttonColor, int soundNumber) {
+  Expanded _createSoundButton(
+      {required Color color, required int soundNumber}) {
     final player = AudioPlayer();
     return Expanded(
       child: TextButton(
         onPressed: () async {
           await player.play(AssetSource('note$soundNumber.wav'));
         },
-        child: Container(color: buttonColor),
+        child: Container(color: color),
         style: TextButton.styleFrom(padding: EdgeInsets.zero),
       ),
     );
